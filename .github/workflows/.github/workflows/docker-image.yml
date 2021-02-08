@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ gh-pages ]
+  pull_request:
+    branches: [ gh-pages ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Glo Add Assignee To Cards
+  # You may pin to the exact commit or the version.
+  # uses: Axosoft/glo-action-assign-card@c5bbc23bc4e7acfec6385554375e845faeb98007
+  uses: Axosoft/glo-action-assign-card@v1
+  with:
+    # Auth token for user
+    authToken: 
+    # Array of { cardId, boardId } objects
+    cards: 
+    # Username of user to assign to card
+    assignee: 
